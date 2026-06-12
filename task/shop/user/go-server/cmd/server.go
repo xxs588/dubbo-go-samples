@@ -25,6 +25,7 @@ import (
 
 import (
 	"dubbo.apache.org/dubbo-go/v3"
+	"dubbo.apache.org/dubbo-go/v3/config_center"
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 	"dubbo.apache.org/dubbo-go/v3/protocol"
 	"dubbo.apache.org/dubbo-go/v3/registry"
@@ -42,6 +43,10 @@ func main() {
 		dubbo.WithRegistry(
 			registry.WithZookeeper(),
 			registry.WithAddress("127.0.0.1:2181"),
+		),
+		dubbo.WithConfigCenter(
+			config_center.WithZookeeper(),
+			config_center.WithAddress("127.0.0.1:2181"),
 		),
 		dubbo.WithProtocol(
 			protocol.WithTriple(),
